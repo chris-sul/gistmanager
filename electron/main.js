@@ -2,9 +2,15 @@ const {app, BrowserWindow} = require('electron')
 const url = require("url");
 const path = require("path");
 
+require('dotenv').config({path:__dirname +'/.env'});
+console.log(process.env)
+
+const {createAuthWindow} = require('./main/auth-process');
+const authService = require('./services/auth-service');
+
 let mainWindow
 
-function createWindow () {
+function createAppWindow () {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -28,7 +34,17 @@ function createWindow () {
   })
 }
 
-app.on('ready', createWindow)
+async function checkAuth() {
+  try {
+    await authService.refreshTokens();
+    return createAppWindow();
+  } catch (err) {
+    createAuthWindow();
+  }
+}
+
+
+app.on('ready', checkAuth)
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
@@ -37,3 +53,7 @@ app.on('window-all-closed', function () {
 app.on('activate', function () {
   if (mainWindow === null) createWindow()
 })
+
+module.exports = {
+  createAppWindow,
+};
