@@ -1,15 +1,13 @@
 {
   "name": "gistmanager",
   "version": "0.0.0",
-  "main": "electron/main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "start:electron": "ng build --base-href ./ && electron ."
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -21,10 +19,12 @@
     "@angular/platform-browser": "~11.1.0",
     "@angular/platform-browser-dynamic": "~11.1.0",
     "@angular/router": "~11.1.0",
-    "axios": "^0.21.1",
+    "@auth0/auth0-angular": "^1.3.2",
+    "@fortawesome/angular-fontawesome": "^0.8.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "dotenv": "^8.2.0",
-    "jwt-decode": "^3.1.2",
-    "keytar": "^7.3.0",
+    "dotenv-webpack": "^6.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
@@ -34,9 +34,8 @@
     "@angular/cli": "~11.1.1",
     "@angular/compiler-cli": "~11.1.0",
     "@types/jasmine": "~3.6.0",
-    "@types/node": "^12.11.1",
+    "@types/node": "^12.19.15",
     "codelyzer": "^6.0.0",
-    "electron": "^11.2.1",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.2.0",

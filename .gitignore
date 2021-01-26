@@ -45,5 +45,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Configuration Files
+# Configuration
 .env
+auth_config.json

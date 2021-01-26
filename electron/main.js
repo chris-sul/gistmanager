@@ -3,7 +3,6 @@ const url = require("url");
 const path = require("path");
 
 require('dotenv').config({path:__dirname +'/.env'});
-console.log(process.env)
 
 const {createAuthWindow} = require('./main/auth-process');
 const authService = require('./services/auth-service');
@@ -18,6 +17,8 @@ function createAppWindow () {
       nodeIntegration: true
     }
   })
+
+  console.log(__dirname);
 
   mainWindow.loadURL(
     url.format({

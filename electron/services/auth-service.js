@@ -44,7 +44,14 @@ function getAuthenticationURL() {
 }
 
 async function refreshTokens() {
+    const secret = keytar.getPassword(keytarService, keytarAccount);
+    secret.then((result) => {
+        console.log("result: "+ result); // result will be 'secret'
+    });
+    secret.catch(error => console.log(error.message));
+    
   const refreshToken = await keytar.getPassword(keytarService, keytarAccount);
+  console.log("hello");
 
   if (refreshToken) {
     const refreshOptions = {
