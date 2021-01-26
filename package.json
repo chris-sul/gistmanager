@@ -23,6 +23,8 @@
     "@fortawesome/angular-fontawesome": "^0.8.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@okta/okta-angular": "^3.0.1",
+    "@okta/okta-signin-widget": "^5.2.2",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^6.0.0",
     "rxjs": "~6.6.0",

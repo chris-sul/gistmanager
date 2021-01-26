@@ -1,0 +1,16 @@
+const CLIENT_ID = "";
+const ISSUER = "";
+const OKTA_TESTING_DISABLEHTTPSCHECK = true;
+
+export default {
+  oidc: {
+    clientId: `${CLIENT_ID}`,
+    issuer: `${ISSUER}`,
+    redirectUri: '/login/callback',
+    scopes: ['openid', 'profile', 'email'],
+    pkce: true,
+    testing: {
+      disableHttpsCheck: `${OKTA_TESTING_DISABLEHTTPSCHECK}`
+    }
+  }
+};

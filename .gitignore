@@ -47,4 +47,4 @@ Thumbs.db
 
 # Configuration
 .env
-auth_config.json
+app.config.ts

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import { AuthService } from '@auth0/auth0-angular';
+import { OktaAuthService } from '@okta/okta-angular';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +10,29 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 
 export class AppComponent {
-  constructor(public auth: AuthService) {}
+  isAuthenticated: boolean = false;
 
   title = 'gistmanager';
   faUserCircle = faUserCircle;
+
+
+  constructor(public oktaAuth: OktaAuthService) {
+    // Subscribe to authentication state changes
+    this.oktaAuth.$authenticationState.subscribe(
+      (isAuthenticated: boolean) => this.isAuthenticated = isAuthenticated
+    );
+  }
+
+  async ngOnInit() {
+    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
+  }
+
+  login() {
+    this.oktaAuth.signInWithRedirect();
+  }
+
+  
+  logout() {
+    this.oktaAuth.signOut();
+  }
 }

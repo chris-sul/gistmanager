@@ -4,7 +4,7 @@
         <div class="nav-user">
             <ul>
                 <li>
-                    <app-authentication-button></app-authentication-button>
+                    <button *ngIf="!isAuthenticated" (click)="login()"> Login </button>
                 </li>
             </ul>
         </div>

@@ -1,21 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from '@auth0/auth0-angular';
+import { OktaAuthService } from '@okta/okta-angular';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
+
 export class HomeComponent implements OnInit {
-  profileJson: string = '';
+  userName: string = "";
+  isAuthenticated: boolean = false;
 
-  constructor(public auth: AuthService) { }
-
-  ngOnInit(): void {
-    this.auth.user$.subscribe(
-      (profile) => (this.profileJson = JSON.stringify(profile, null, 2))
+  constructor(public oktaAuth: OktaAuthService) {
+    // Subscribe to authentication state changes
+    this.oktaAuth.$authenticationState.subscribe(
+      (isAuthenticated: boolean) => this.isAuthenticated = isAuthenticated
     );
+  }
+
+  async ngOnInit() {
+    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
+    
+    // returns an object with user's claims
+    const userClaims = await this.oktaAuth.getUser();
+
+    // user name is exposed directly as property
+    this.userName = userClaims.name as string;
+
   }
 
 }
