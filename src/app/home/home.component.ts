@@ -22,13 +22,12 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     this.isAuthenticated = await this.oktaAuth.isAuthenticated();
-    
+
     // returns an object with user's claims
     const userClaims = await this.oktaAuth.getUser();
 
     // user name is exposed directly as property
     this.userName = userClaims.name as string;
-
   }
 
 }
