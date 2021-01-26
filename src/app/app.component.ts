@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { OktaAuthService } from '@okta/okta-angular';
 
 @Component({
@@ -14,6 +14,7 @@ export class AppComponent {
 
   title = 'gistmanager';
   faUserCircle = faUserCircle;
+  faSignOutAlt = faSignOutAlt;
 
 
   constructor(public oktaAuth: OktaAuthService) {
@@ -31,7 +32,6 @@ export class AppComponent {
     this.oktaAuth.signInWithRedirect();
   }
 
-  
   logout() {
     this.oktaAuth.signOut();
   }

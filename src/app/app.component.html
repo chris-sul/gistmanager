@@ -4,7 +4,14 @@
         <div class="nav-user">
             <ul>
                 <li>
-                    <button *ngIf="!isAuthenticated" (click)="login()"> Login </button>
+                    <a href="#" *ngIf="!isAuthenticated" (click)="login()">
+                        <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
+                        Login
+                    </a>
+                    <a href="#" *ngIf="isAuthenticated" (click)="logout()">
+                        <fa-icon [icon]="faSignOutAlt" size="lg"></fa-icon>
+                        Logout
+                    </a>
                 </li>
             </ul>
         </div>
