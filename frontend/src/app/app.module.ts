@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
@@ -22,7 +23,8 @@ import config from './app.config';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    OktaAuthModule
+    OktaAuthModule,
+    HttpClientModule,
   ],
   providers: [
     { provide: OKTA_CONFIG, useValue: config.oidc },
